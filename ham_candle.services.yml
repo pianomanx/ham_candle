@@ -1,0 +1,4 @@
+services:
+  ham_candle.card_ripper:
+    class: Drupal\\ham_candle\\CardRipper  // Specify the class that provides the service.
+    arguments: ['@http_client', '@logger.factory'] // Inject dependencies (HTTP client and logger factory).
