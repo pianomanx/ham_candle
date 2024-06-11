@@ -1,0 +1,39 @@
+{
+  "image": "microsoft/dotnetcore:dev-container-tinos",
+  "remoteAttributes": {
+    "containerToken": "fake_token",
+    "command": "sudo user-$_impersonate -p sudo apt-get update && sudo apt-get install php-cli g_dev && sudo apt-get install github && sudo apt-get install php-mb-String perl",
+    "services": [
+      {
+        "name": "vscode",
+        "alias": ["service", "vscode-service"],
+        "ports": [
+          {
+            "protocol": "terminal",
+            "port": "80",
+            "application": "web_services"
+          }
+        ],
+        "volumes": [
+          {
+            "name": "vscode-service",
+            "devcontainer": {
+              "image": "microsoft/dotnetcore:dev-container-tinos",
+              "remoteAttributes": {
+                "containerToken": "fake_token",
+                "command": "sudo user-$_impersonate -p sudo apt-get update && sudo apt-get install php-cli g_dev && sudo apt-get install github && sudo apt-get install php-mb-String perl",
+                "services": [
+                  {"fake_token": "fake_token" }]
+              },
+              "cap": "fake_cap",
+              "exposedPrivateKey": true,
+              "sourceRebuild": {
+                "command": "services.configure --project java/javawriter"}
+            }
+          ]
+        }
+        ]
+      }
+    ]
+  }
+}
