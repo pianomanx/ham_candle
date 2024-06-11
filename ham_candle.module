@@ -1,0 +1,30 @@
+<?php
+
+/**
+ * @file
+ * Ham Candle module.
+ */
+
+use Drupal\Core\CronInterface;
+
+/**
+ * Implements hook_help().
+ * Provides help information for the module.
+ */
+function ham_candle_help($route_name, $route_match) {
+  switch ($route_name) {
+    case 'help.page.ham_candle':
+      return '<p>' . t('The Ham Candle module checks eBay and other auction sites for collectible trading cards every hour.') . '</p>';
+  }
+}
+
+/**
+ * Implements hook_cron().
+ * This function will be called by Drupal's cron system.
+ */
+function ham_candle_cron() {
+  // Call the service to check auctions.
+  \Drupal::service('Ham_candle.card_ripper');
+  $service = \Drupal::service('Ham_candle.card_ripper');
+  $service->checkAuctions();
+}
