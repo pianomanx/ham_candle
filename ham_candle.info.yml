@@ -1,0 +1,6 @@
+name: 'Ham Candle'
+type: module
+description: 'The Card Ripper - checks eBay and other auction sites for collectible trading cards.'core_version_requirement: ^10
+package: Custom
+dependencies:
+- drupal:scheduler
