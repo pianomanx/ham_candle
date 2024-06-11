@@ -1,0 +1,8 @@
+ham_candle.help:
+  path: '/admin/help/ham_candle'
+  defaults:
+    controller: '\Dsystem\Controller\SystemController::help'
+    title: 'Ham Candle'
+  requirements:
+    _permission: 'access help'
+  // Ensure the user has the necessary permission.
